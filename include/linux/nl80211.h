@@ -1519,10 +1519,6 @@ enum nl80211_attrs {
 #define NL80211_MAX_NR_CIPHER_SUITES		5
 #define NL80211_MAX_NR_AKM_SUITES		2
 
-// WAPI
-#define NL80211_MAX_NR_CIPHER_SUITES		6
-#define NL80211_MAX_NR_AKM_SUITES		4
-// WAPI
 /**
  * enum nl80211_iftype - (virtual) interface types
  *

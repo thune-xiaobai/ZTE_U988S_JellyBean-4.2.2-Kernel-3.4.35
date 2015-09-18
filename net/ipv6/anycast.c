@@ -383,10 +383,10 @@ static int ipv6_chk_acast_dev(struct net_device *dev, const struct in6_addr *add
 /*
  *	check if given interface (or any, if dev==0) has this anycast address
  */
-int ipv6_chk_acast_addr(struct net *net, struct net_device *dev,
-			const struct in6_addr *addr)
+bool ipv6_chk_acast_addr(struct net *net, struct net_device *dev,
+			 const struct in6_addr *addr)
 {
-	int found = 0;
+	bool found = false;
 
 	rcu_read_lock();
 	if (dev)
@@ -394,13 +394,12 @@ int ipv6_chk_acast_addr(struct net *net, struct net_device *dev,
 	else
 		for_each_netdev_rcu(net, dev)
 			if (ipv6_chk_acast_dev(dev, addr)) {
-				found = 1;
+				found = true;
 				break;
 			}
 	rcu_read_unlock();
 	return found;
 }
-
 
 #ifdef CONFIG_PROC_FS
 struct ac6_iter_state {
